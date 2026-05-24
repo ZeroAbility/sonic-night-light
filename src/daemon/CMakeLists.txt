@@ -33,6 +33,8 @@ target_sources(knighttimed PRIVATE
     main.cpp
 )
 
+target_include_directories(knighttimed SYSTEM PRIVATE ${KDE_INSTALL_INCLUDEDIR}/KF6/KCoreAddons)
+
 target_link_libraries(knighttimed PRIVATE
     KNightTime
 
@@ -41,8 +43,9 @@ target_link_libraries(knighttimed PRIVATE
 
     KF6::ConfigCore
     KF6::ConfigGui
-    KF6::CoreAddons
+    #KF6::CoreAddons
     KF6::DBusAddons
+    KF6CoreAddons
 )
 
 install(FILES org.kde.NightTime.xml DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR})

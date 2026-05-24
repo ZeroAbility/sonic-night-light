@@ -46,11 +46,13 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 
 find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     Config
-    CoreAddons
+    #CoreAddons
     DBusAddons
     Holidays
     I18n
 )
+
+find_package(SonicFrameworksCoreAddons ${KF6_MIN_VERSION} REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.9.0
     KF 6.16.0
@@ -68,28 +70,28 @@ endif()
 
 add_subdirectory(src)
 
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KNightTime")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/SonicDENightLight")
 
 write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/KNightTimeConfigVersion.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/SonicDENightLightConfigVersion.cmake"
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY AnyNewerVersion
 )
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/KNightTimeConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/KNightTimeConfig.cmake"
+	"${CMAKE_CURRENT_SOURCE_DIR}/SonicDENightLightConfig.cmake.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/SonicDENightLightConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
 )
 
 install(
     FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/KNightTimeConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/KNightTimeConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/SonicDENightLightConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/SonicDENightLightConfigVersion.cmake"
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}" COMPONENT Devel
 )
 
-install(EXPORT KNightTimeTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KNightTimeTargets.cmake)
+install(EXPORT KNightTimeTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE SonicDENightLightTargets.cmake)
 
 ki18n_install(po)
 
